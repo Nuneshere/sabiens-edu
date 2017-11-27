@@ -20,6 +20,10 @@ before_install:
 before_script:
 - npm install -g angular-cli
 - npm install -g karma
+- npm install materialize-css --save
+- npm install angular2-materialize --save
+- npm install jquery@^2.2.4 --save
+- npm install hammerjs --save
 - cd front-end &&  npm install
 - ng build
 
