@@ -1,0 +1,28 @@
+Feature: Manipulação da lista de tarefas de alteração conteúdos e formulários 
+	As an Administrador da aplicação
+	I want to manipular a “Lista de monitores” com tarefas de criação de determinado conteúdo ou formulário, com descrição da tarefa e data de entrega.
+	So that eu possa gerenciar quem está encarregado por tais criações e quem pode ter acesso a edições.
+
+Scenario: Administrador tenta adicionar um monitor não presente na lista de monitores à uma lista de tarefas de um formulário.
+
+Given Está na página “Inserção de Sistema do Corpo Humano”
+Given A lista de monitores está vazia.
+Given vê a “lista de tarefa de criação do formulário do Sistema Neurológico“ igualmente vazia.
+Given ela busca inserir um novo aluno a lista.
+Given preenche o campo  “Nome” com “Rômulo” o campo “descrição” de “finalizar ajustes” e último campo de “Data de entrega” para “12/10/2017”.
+When “Fátima” tenta adicionar um novo monitor na “lista de tarefa de  criação do conteúdo Resumo de Sistema Neurológico“ 
+Then uma mensagem de erro será exibida devido a falta de um monitor com “Nome” com “Rômulo” na “lista de monitores” . 
+
+Scenario: Monitora não possui nome na lista de tarefa uma tarefa correspondente a o formulário de  um sistema, mas mesmo assim, tenta editar-lo.
+
+Given  Monitora “Joanna” esteja na página de “Formulário sobre o sistema Neurológico”.
+Given "Joanna" possui na “lista de tarefas” somente a tarefa com campo “Descrição” de “Criar formulário Sistema Linfático” .
+When  “Joanna” tenta editar o “Formulário” com “Titulo” de  “Questões de Sistema Neurológico”
+Then  Ela é impedida de entrar no modo de edição e uma alert aparece mostrando "Você não tem acesso para entrar nessa pagina".
+
+Cenário  : Monitor contida na lista de tarefa de um formulário não finaliza a tarefa na data de entrega prevista. 
+	
+Given  A Monitora “Joanna” possui na sua “lista de tarefas” a tarefa com campo “Descrição” de “Criar formulário Sistema Linfático”.
+When  A “data de entrega” data atual for “ 13/10/2017”
+When a tarefa com campo “Descrição” de “Criar formulário Sistema Linfático” com campo de “Data de entrega” para “12/10/2017” tem o campo “Status” como “Aguardando”.
+Then Deve se registrar um atraso atrelado a “Joana” e ao conteúdo de “Resumo de Sistema Neurológico”.
