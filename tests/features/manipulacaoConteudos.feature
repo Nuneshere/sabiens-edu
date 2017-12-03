@@ -21,3 +21,16 @@ Given preenche o campo “Órgãos e explicações” com “Nome do órgão - L
 Given não preenche nada no campo de  “Conclusão e comentários”.
 When “Fátima” adiciona um novo conteúdo
 Then uma mensagem de erro é exibida devido a falta de preenchimento de um campo.
+
+
+
+Scenario: Inserindo conteúdo, sem êxito, por não ter atingido o mínimo necessário de caracteres no campo conclusão.
+
+Given “Fátima” está na página “Sistema Respiratório”
+Given so estão contidos na lista de conteúdo os seguintes “Curiosidades sobre os órgãos” , “Descobertas na área”.
+Given preenche o campo “Título” com “Resumo do Sistema Respiratório”
+Given preenche o campo “Introdução” com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
+Given preenche o campo “Órgãos e explicações” com “Nome do órgão - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
+Given não preenche nada no campo de  “Conclusão e comentários” simplesmente com "hello".
+When “Fátima” adiciona um novo conteúdo
+Then uma mensagem de erro é exibida devido a falta do número caracteres minimos para efetuar a inserção.
