@@ -10,3 +10,14 @@ Given So está contidos na lista de conteúdo o conteudo com seguinte titulo "Re
 Given Adiciono na lista de conteudo o conteudo com seguinte titulo "Resumo rápido do Sistema Respiratorio" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, conclusao com "ipsum dolor sit"
 When Eu tento inserir o conteudo
 Then Uma mensagem de erro em forma de alert com o texto "Essa conteudo já existe" aparece na tela
+
+Scenario: Inserindo conteúdo, que previamente não foi inserido, sem êxito, por falta de preenchimento do campo de “Conclusão e comentários”.
+
+Given “Fátima” está na página “Sistema Respiratório”
+Given so estão contidos na lista de conteúdo os seguintes “Curiosidades sobre os órgãos” , “Descobertas na área”.
+Given preenche o campo “Título” com “Resumo do Sistema Respiratório”
+Given preenche o campo “Introdução” com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
+Given preenche o campo “Órgãos e explicações” com “Nome do órgão - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
+Given não preenche nada no campo de  “Conclusão e comentários”.
+When “Fátima” adiciona um novo conteúdo
+Then uma mensagem de erro é exibida devido a falta de preenchimento de um campo.
