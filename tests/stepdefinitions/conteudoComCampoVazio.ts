@@ -36,15 +36,9 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     })
 
     Then(/^Um alerta aparece com a mensagem "([^\"]*)" aparece, pois um campo não foi preenchido$/, async (alertMes) => {
-        browser.wait(function() {
-            return browser.switchTo().alert().then(
-                function() { expect(this.alert.getText()).to.eventually.equal(alertMes); 
-                            this.alert.dismiss();}, 
-                function() { return false; }
-                
-            );
-            
-        });
+        var alert = browser.switchTo().alert()
+        await expect(alert.getText()).to.eventually.equal(alertMes);
+        await alert.dismiss();
         
     }) 
 })
