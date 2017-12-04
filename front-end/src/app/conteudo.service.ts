@@ -2,8 +2,16 @@ import { Conteudo } from './conteudo';
 
 export class ConteudoService {
   conteudos: Conteudo[] = [];
+  minimocaracteres: Number = 60;
   gravarConteudo(conteudo: Conteudo): String {
     var result = null;
+    var copyConclusao: String = conteudo.conclusao;
+    var copyDesTopico: String = conteudo.desenvolvimento[0].descricao;
+    copyConclusao = copyConclusao.split(" ").join("");
+    copyDesTopico = copyDesTopico.split(" ").join("");
+    var quantidadeConc:Number = copyConclusao.length;  
+    var quantidadeDes:Number = copyDesTopico.length;  
+
     if (conteudo.conclusao == "" || conteudo.conclusao == undefined || conteudo.nome == "" || conteudo.nome == undefined || conteudo.descricao == "" || conteudo.descricao == undefined
   || conteudo.introducao == "" || conteudo.introducao == undefined || conteudo.desenvolvimento[0].nome== ""  || conteudo.desenvolvimento[0].nome== undefined || conteudo.desenvolvimento[0].descricao==""  
 || conteudo.desenvolvimento[0].descricao== undefined){
@@ -11,8 +19,13 @@ export class ConteudoService {
     } else if(this.conteudoExistente(conteudo.nome)==false) {
         console.log("deu certo, ele identificou um conteudo preexistente");
         result = "sameTitle";
-     }
-    else{
+    } else if(quantidadeConc < this.minimocaracteres || quantidadeDes < this.minimocaracteres) {
+      console.log("não foi atingido o minimo de caracteres na conclusao");
+      result = "minCaracterConc";
+    } else if(quantidadeDes < this.minimocaracteres) {
+      console.log("não foi atingido o minimo de caracteres desenvolv");
+      result = "minCaracterDes";
+    }else{
       console.log("nome visto ", conteudo.nome);
       this.conteudos.push(conteudo);
       result = "ok";
@@ -27,4 +40,5 @@ export class ConteudoService {
   conteudoExistente(titulo:string): boolean {
     return !this.conteudos.find(conteudoX => conteudoX.nome == titulo);
   }
+  
 }
