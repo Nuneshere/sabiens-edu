@@ -30,16 +30,13 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     
     })
 
-    When(/^Eu tento inserir o conteudo$/, async () => {
+    When(/^Eu tento inserir o novo conteudo, com campo de conclusão vazio$/, async () => {
         await $("a[name='send']").click();
     })
 
-    Then(/^Uma mensagem de erro em forma de mensagem aparece, pois um campo não foi preenchido$/, async (alertMes, title) => {
-        /* var listaConteudo : ElementArrayFinder = element.all(by.name('listaconteudo'));
-        await listaConteudo;
-        var sameTitle = listaConteudo.filter(elem => sameTitle(elem,title));
-        await sameTitle;
-        await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
-        */
+    Then(/^Um alerta aparece com a mensagem "([^\"]*)" aparece, pois um campo não foi preenchido$/, async (alertMes) => {
+        var alert = browser.switchTo().alert()
+        await expect(alert.getText()).to.eventually.equal(alertMes);
+        await alert.dismiss();
     }) 
 })

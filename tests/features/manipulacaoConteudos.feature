@@ -9,14 +9,14 @@ Given Estou na página de Cadastro de Conteudo
 Given So está contidos na lista de conteúdo o conteudo com seguinte titulo "Resumo rápido do Sistema Respiratorio" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "orem ipsum dolor sit" e por fim, conclusao com "orem ipsum dolor sit"
 Given Adiciono na lista de conteudo o conteudo com seguinte titulo "Resumo rápido do Sistema Respiratorio" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, conclusao com "ipsum dolor sit"
 When Eu tento inserir o conteudo
-Then Uma mensagem de erro em forma de alert com o texto "Essa conteudo já existe" aparece na tela
+Then Uma mensagem de erro em forma de alert com o texto "Já existe um conteúdo com esse título" aparece na tela
 
 Scenario: Inserindo conteúdo, que previamente não foi inserido, sem êxito, por falta de preenchimento do campo de “Conclusão e comentários”.
 
-Given Estou na página de Cadastro de Conteudo para o sistema
+Given Estou na página de Cadastro de Conteudo no sistema
 Given Adiciono na lista de conteudo, o conteudo com titulo de "Sobre os orgãos" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, e deixou em branco o campo de conclusao
-When Eu tento inserir o conteudo
-Then uma mensagem de erro é exibida devido a falta de preenchimento de um campo.
+Given Eu tento inserir o novo conteudo, com campo de conclusão vazio
+Then Um alerta aparece com a mensagem "Você esqueceu de preencher algum campo" aparece, pois um campo não foi preenchido
 
 Scenario: Inserindo conteúdo, sem êxito, por não ter atingido o mínimo necessário de caracteres no campo conclusão.
 
