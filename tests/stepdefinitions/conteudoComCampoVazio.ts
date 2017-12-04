@@ -6,6 +6,7 @@ let expect = chai.expect;
 
 let sleep = (ms => new Promise(resolve => setTimeout(resolve, ms)));
 
+
 defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
     setDefaultTimeout(60 * 1000);
@@ -35,8 +36,15 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     })
 
     Then(/^Um alerta aparece com a mensagem "([^\"]*)" aparece, pois um campo não foi preenchido$/, async (alertMes) => {
-        var alert = browser.switchTo().alert()
-        await expect(alert.getText()).to.eventually.equal(alertMes);
-        await alert.dismiss();
+        browser.wait(function() {
+            return browser.switchTo().alert().then(
+                function() { expect(this.alert.getText()).to.eventually.equal(alertMes); 
+                            this.alert.dismiss();}, 
+                function() { return false; }
+                
+            );
+            
+        });
+        
     }) 
 })
