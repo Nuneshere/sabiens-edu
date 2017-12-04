@@ -48,12 +48,9 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await $("a[name='send']").click();
     })
 
-    Then(/^Uma mensagem de erro em forma de alert com o texto  pois existe um conteudo com Título de$/, async (alertMes, title) => {
-        /* var listaConteudo : ElementArrayFinder = element.all(by.name('listaconteudo'));
-        await listaConteudo;
-        var sameTitle = listaConteudo.filter(elem => sameTitle(elem,title));
-        await sameTitle;
-        await sameTitle.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
-        */
+    Then(/^Uma mensagem de erro em forma de alert com o texto "([^\"]*)" aparece na tela$/, async (alertMes) => {
+        var alert = browser.switchTo().alert()
+        await expect(alert.getText()).to.eventually.equal(alertMes);
+        await alert.dismiss();
     }) 
 })
