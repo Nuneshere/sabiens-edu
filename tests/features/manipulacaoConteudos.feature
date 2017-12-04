@@ -21,12 +21,9 @@ Then Um alerta aparece com a mensagem "Você esqueceu de preencher algum campo" 
 Scenario: Inserindo conteúdo, sem êxito, por não ter atingido o mínimo necessário de caracteres no campo conclusão.
 
 Given Estou na página de Cadastro de Conteudo
-Given preenche o campo “Título” com “Resumo do Sistema Respiratório”
-Given preenche o campo “Introdução” com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given preenche o campo “Órgãos e explicações” com “Nome do órgão - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given não preenche nada no campo de  “Conclusão e comentários” simplesmente com "hello".
-When Adiciono um novo conteúdo
-Then uma mensagem de erro é exibida devido a falta do número caracteres minimos para efetuar a inserção.
+Given Preencho os campos de titulo "Resumo rápido do Sistema Respiratorio" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp" e por fim, conclusao com "Lorem ipsum "
+When Eu tento adiconar o conteudo a lista de conteudos
+Then Um alerta deve ser exibida devido com a mensagem "Você escreveu pouquissimo no campo de conclusão"
 
 Scenario: Removendo um conteúdo, em seguida, não vendo ele mais na lista de conteudo 
 
