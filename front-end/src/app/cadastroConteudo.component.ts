@@ -72,6 +72,16 @@ export class CadastroConteudo {
     this.topico = [];     //reinicio os topicos
     this.resetInputs(); // esvazio os inputs
   }
+  remover(id:string): void{
+    var idNumber = Number(id);
+    idNumber = idNumber;
+    var result = this.cadastroServico.removerConteudo(idNumber);
+    console.log("id no front é",idNumber);
+    if ( result == "ok"){
+      this.conteudos.splice(idNumber,idNumber+1);
+      console.log("deletando array no front", this.conteudos);      
+    }
+  }
   resetInputs(): void{
       this.tituloInput.nativeElement.value = "";
       this.descricaoInput.nativeElement.value = "";

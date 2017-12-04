@@ -32,7 +32,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     })
 
     When(/^Seleciono para remover o unico conteúdo da lista$/, async () => {
-        await $("i[name='excluir']").click();
+        await $("a[name='remover']").click();
     })
 
     Then(/^Um alerta deve ser exibida com a mensagem "([^\"]*)"$/, async (alertMes) => {

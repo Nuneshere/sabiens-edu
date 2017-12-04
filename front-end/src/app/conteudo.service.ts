@@ -34,6 +34,13 @@ export class ConteudoService {
     console.log("resultado é", result);
     return result;
   }
+  removerConteudo(id:number): String{
+    console.log("id no back é",id);
+    this.conteudos.splice(id,id);
+    console.log("deletando array do service ", this.conteudos);
+    var result = "ok";
+    return result;
+  }
   quantidadeConteudos(): number {
     return this.conteudos.length;
   }

@@ -28,6 +28,6 @@ Then Um alerta deve ser exibida devido com a mensagem "Você escreveu pouquissim
 Scenario: Removendo um conteúdo, em seguida, não vendo ele mais na lista de conteudo 
 
 Given Estou na página de Cadastro de Conteudo ao sistema
-So está contidos na lista de conteúdo o conteudo com titulo de "Resumo rápido do Sistema Respiratorio" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp" e por fim, conclusao com "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp"
+Given So está contidos na lista de conteúdo o conteudo com titulo de "Resumo rápido do Sistema Respiratorio" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp" e por fim, conclusao com "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp"
 When Seleciono para remover o unico conteúdo da lista
 Then Um alerta deve ser exibida com a mensagem "conteúdo excluido com exito"
