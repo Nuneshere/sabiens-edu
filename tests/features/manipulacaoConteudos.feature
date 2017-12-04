@@ -14,7 +14,7 @@ Then Uma mensagem de erro em forma de alert com o texto "Já existe um conteúdo
 Scenario: Inserindo conteúdo, que previamente não foi inserido, sem êxito, por falta de preenchimento do campo de “Conclusão e comentários”.
 
 Given Estou na página de Cadastro de Conteudo no sistema
-Given Adiciono na lista de conteudo, o conteudo com titulo de "Sobre os orgãos" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, e deixou em branco o campo de conclusao
+Given Adiciono na lista de conteudo, o conteudo com titulo de "Sobre os orgãos" , descricao de "orem ipsum dolor sit" , introducao de "orem ipsum dolor sit" , desenvolvimento com titulo de "lorem ipsum dolor sit" e descricao "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp" e por fim, conclusao com "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp"
 Given Eu tento inserir o novo conteudo, com campo de conclusão vazio
 Then Um alerta aparece com a mensagem "Você esqueceu de preencher algum campo" aparece, pois um campo não foi preenchido
 
