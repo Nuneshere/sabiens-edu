@@ -13,12 +13,9 @@ Then Uma mensagem de erro em forma de alert com o texto "Essa conteudo já exist
 
 Scenario: Inserindo conteúdo, que previamente não foi inserido, sem êxito, por falta de preenchimento do campo de “Conclusão e comentários”.
 
-Given Estou na página de Cadastro de Conteudo
-Given preenche o campo “Título” com “Resumo do Sistema Respiratório”
-Given preenche o campo “Introdução” com “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given preenche o campo “Órgãos e explicações” com “Nome do órgão - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut” 
-Given não preenche nada no campo de  “Conclusão e comentários”.
-When Adiciono um novo conteúdo
+Given Estou na página de Cadastro de Conteudo para o sistema
+Given Adiciono na lista de conteudo, o conteudo com titulo de "Sobre os orgãos" , descricao de "Descricao ipsum dolor sit" , introducao de "Introducao ipsum dolor sit" , desenvolvimento com titulo de "ipsum dolor sit" e descricao "ipsum dolor sit" e por fim, e deixou em branco o campo de conclusao
+When Eu tento inserir o conteudo
 Then uma mensagem de erro é exibida devido a falta de preenchimento de um campo.
 
 Scenario: Inserindo conteúdo, sem êxito, por não ter atingido o mínimo necessário de caracteres no campo conclusão.
