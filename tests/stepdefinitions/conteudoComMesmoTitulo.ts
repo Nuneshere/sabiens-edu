@@ -32,7 +32,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     
     })
 
-    Given(/^Adiciono na lista de conteudo o conteudo com seguinte titulo "([^\"]*)" , descricao de "([^\"]*)" , introducao de "([^\"]*)" , desenvolvimento com titulo de "([^\"]*)" e descricao "([^\"]*)" e por fim, conclusao com "([^\"]*)"$/, async (titulo,descriConteudo, intro, nomeTopico, descriTopico ,concl) => {
+    Given(/^Preencho os campos de titulo com "([^\"]*)" , descricao de "([^\"]*)" , introducao de "([^\"]*)" , desenvolvimento com titulo de "([^\"]*)" e descricao "([^\"]*)" e por fim, conclusao com "([^\"]*)"$/, async (titulo,descriConteudo, intro, nomeTopico, descriTopico ,concl) => {
         
         //await expect(browser.getTitle()).to.eventually.equal('Adicionar conteudo');//checa se está
         await $("input[name='titulo']").sendKeys(<string> titulo); //Adicionando o conteudo na lista
