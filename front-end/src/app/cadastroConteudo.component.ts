@@ -79,7 +79,8 @@ export class CadastroConteudo {
     console.log("id no front é",idNumber);
     if ( result == "ok"){
       this.conteudos.splice(idNumber,idNumber+1);
-      console.log("deletando array no front", this.conteudos);      
+      console.log("deletando array no front", this.conteudos); 
+      alert("Conteúdo excluido com exito");       
     }
   }
   resetInputs(): void{
