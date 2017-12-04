@@ -80,7 +80,7 @@
               <th>Deletar?</th>
           </tr>
         </thead>
-    
+        
         <tbody *ngFor="let a of conteudos" name="listaconteudo" >
           <tr>
             <td name="titulos"> {{a.nome}} </td>
@@ -92,7 +92,9 @@
             
           </tr>
          </tbody> 
-    </table> 
+    </table>
+    
+    <a class="waves-effect waves-light btn" (click)="remover(0)" name="remover" style="background-color:#f44336;border-radius:30px;" > <i  style="color:#ffffff;" class="material-icons">delete_forever</i>  </a>
     
 </div>
 
